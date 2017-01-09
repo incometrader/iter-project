@@ -1,0 +1,25 @@
+
+function smallestCommons(arr) {
+  var newArr = [];
+  for (var x = Math.max(arr[0], arr[1]); x>= Math.min(arr[0], arr[1]); x--){
+    newArr.push(x);
+  }
+  
+  function gcd(x, y){
+    if (y === 0){
+      return x;
+    }
+    return gcd(y, x % y);
+  }
+  
+  var lcm = newArr[0];
+  for (var i = 1; i <= newArr.length; i++){
+    var gcdNum = gcd(lcm, newArr[i]);
+    lcm = (lcm * newArr[i]/ gcdNum);   
+  }
+  
+  return lcm; 
+}
+
+
+smallestCommons([1, 5]);
