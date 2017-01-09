@@ -22,4 +22,33 @@ function smallestCommons(arr) {
 }
 
 
-smallestCommons([1, 5]);
+function sumPrimes(num) {
+  function isPrime(n){
+    if (n < 2){
+      return false;
+    }
+    if (n == 2){
+      return true;
+    }
+    var isPrime = true;
+    for (var i = 2; i <= Math.sqrt(n); i++){
+      if (n % i === 0){
+        isPrime = false;
+      }    
+    }
+    return isPrime;
+  }
+  
+  var primeArr = [];
+  for (var i = 0; i <= num; i++){
+    if (isPrime(i)){
+      primeArr.push(i);
+    }
+  }
+  
+  var summation = primeArr.reduce(function(a,b){
+    return a+b;
+  }, 0);
+  return summation;
+}
+
